@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post">
+            <input type="text" name="titulo-streaming" id="titulo-streaming" placeholder="titulo do streaming"value="{{streaming_selecionada.titulo_streaming if streaming_selecionada else '' }}">
+            <input type="radio" name="MustWatch" id="MustWatch" value="{{streaming_selecionada.titulo_streaming if streaming_selecionada else '' }}">
+            <button type="submit">Salvar</button>
+
+            {% if streaming_selecionada %}
+
+                <a href="{{ url_for('lista') }}" class="btn btn-secondary">Cancelar</a>
+
+            {% endif %}
+    </form>
+
+    <h2>Lista de streamings</h2>
+    {% if streamings %}
+
+    <ul>
+        {% for streaming in streamings %}
+            <li>{{ streaming.titulo_streaming }} - {{ streaming.tipo_streaming }}
+            <a href="{{ url_for('delete', idStreaming=streaming.id_streaming) }}" class="btn btn-danger">Apagar</a></li>
+            <a href="{{ url_for('uptade', idStreaming=streaming.id_streaming) }}" class="btn btn-primary">Editar</a>
+            <!-- Controle para editar-->
+            {% endfor %}
+    </ul>
+
+    {% else %}
+
+         <p>Nenhum streaming cadastrado, vamo assistir po</p>
+
+    {% endif %}
+
+{% endblock %}

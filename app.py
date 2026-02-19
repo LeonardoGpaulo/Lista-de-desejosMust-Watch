@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from models.streaming import Streaming
+from models.desejos import Streaming
 from models.database import init_db
 
 app = Flask(__name__)
@@ -16,14 +16,18 @@ def lista():
 
     if request.method == 'POST':
         titulo_streaming = request.form['titulo-streaming']
-        tipo_streaming= request.form['data-streaming']
-        streaming = Streaming(titulo_streaming, tipo_streaming)
-        streaming.salvar_streaming()
+        tipo_streaming= request.form['tipo-streaming']
+        indicado_por = request.form['indicado-por']
+        imagem = request.form.get('imagem')
 
-    streaming = Streaming.obter_streaming()
+
+        streaming = Streaming(titulo_streaming, tipo_streaming, indicado_por, imagem=imagem)
+        streaming.salvar_lista()
+
+    streamings = Streaming.obter_lista()
     return render_template('lista.html', titulo='Lista de Streams', streamings=streamings)
 
-@app.route('/delete/<int:idWatch>') 
+@app.route('/delete/<int:idStreaming>') 
 def delete(idStreaming):
     streaming = Streaming.id(idStreaming)
     streaming.excluir_streaming()
@@ -32,19 +36,22 @@ def delete(idStreaming):
 
 
 
-@app.route('/uptade/<int:idStreaming>', methods = ['GET', 'POST'])
-def uptade(idStreaming):
+@app.route('/update/<int:idStreaming>', methods = ['GET', 'POST'])
+def update(idStreaming):
         if request.method == 'POST':
-            titulo = request.form['titulo_streaming']
-            tipo = request.form['tipo_streaming']
-            streaming = Streaming(titulo, tipo, idStreaming)
+            titulo = request.form['titulo-streaming']
+            tipo = request.form['tipo-streaming']
+            indicado = request.form['indicado-por']
+            imagem = request.form.get('imagem')
+            streaming = Streaming(titulo, tipo, indicado, imagem=imagem, id_streaming=idStreaming)
+
             streaming.atualizar_streaming()
             return redirect(url_for('lista')) #early return
             
-        streamings = Streaming.obter_streamings()
-        streaming_selecionada = Streaming.id(idStreaming) #seleçã da tarefa que sera editada
+        streamings = Streaming.obter_lista()
+        streaming_selecionada = Streaming.id(idStreaming) #seleçã da streaming que sera editada
         
-        return render_template('lista.html', titulo= f'Errou o streaming, refaz ai! ID: {idStreaming}', streamings=streamings, streaming_selecionada=streaming_selecionada)
+        return render_template('lista.html', titulo= 'Errou o streaming, refaz ai!', streamings=streamings, streaming_selecionada=streaming_selecionada)
 
         
     

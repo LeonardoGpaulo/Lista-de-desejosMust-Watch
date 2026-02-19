@@ -1,0 +1,155 @@
+/* titulo */
+
+h1{
+    background-color: #0f0f0f;
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* corpo do projeto */
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px;
+    background-color: #0f0f0f;
+}
+
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+
+p{
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+}
+
+h2{
+    color: #ffffff;
+}
+
+img{
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 200px;
+}   
+
+
+
+/* TUDO OS BOTÕES ESTÃO AQUI */
+
+
+input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 50px;
+    margin: 2px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e8a23;
+}
+
+li{
+    display: inline-flex;
+    padding: 50px 30px;
+    background-color: #ffffff;
+    color: #000000;
+    flex-direction: column;
+    border-radius: 8px ;
+    margin: 10px;
+}
+
+.btn-secondary{
+    padding: 10px 30px;
+    background-color: red;
+    border-radius: 4px;
+}
+
+.btn-secondary:hover{
+    background-color: #b41313;
+}
+
+.btn-danger{
+    padding: 10px 3px;
+    background-color: #ff0000;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.btn-danger:hover{
+    background-color: #b41313;
+}
+
+.btn-primary{
+    padding: 10px 3px;
+    background-color: #0b2d3d;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.btn-primary:hover{
+    background-color: #071f2b;
+}
+
+
+/* tela de inicio */
+
+a{
+    margin: 3px;
+    color: rgb(255, 255, 255);
+}
+
+.para-lista{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 24px;
+
+}
+.botao-lista{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: #ffffff;
+    border-radius: 4px;
+
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #773535;
+    border-radius: 15px;
+
+}

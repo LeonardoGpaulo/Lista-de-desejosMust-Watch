@@ -45,7 +45,7 @@ para implementar este projeto localmente, siga os seguintes passos:
 8. Edite o arquivo `.env` para definir o caminho do seu banco de dados na constante `DATABASE`. Exemplo:
 
     ~~~env
-    DATABASE='./data/meubanco.db'
+    DATABASE='./data/desejos.db'
     ~~~
 
 9. Rode a aplicação no Python utilizando o comando:

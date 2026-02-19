@@ -2,8 +2,21 @@
 
 {% block content %}
     <form method="post">
-            <input type="text" name="titulo-streaming" id="titulo-streaming" placeholder="titulo do streaming"value="{{streaming_selecionada.titulo_streaming if streaming_selecionada else '' }}">
-            <input type="radio" name="MustWatch" id="MustWatch" value="{{streaming_selecionada.titulo_streaming if streaming_selecionada else '' }}">
+            <input type="text" name="titulo-streaming" id="titulo-streaming" placeholder="titulo do streaming"value="{{streaming_selecionada.titulo_streaming if streaming_selecionada else '' }}" required>
+            <select name="tipo-streaming" id="tipo-streaming" required>
+            <option value="">
+                                Selecione o tipo...
+                            </option>
+                            <option value="Jogo">Jogo</option>
+                            <option value="Filme">Filme</option>
+                            <option value="Série">Série</option>
+                            <option value="Livro">Livro</option>
+            </select>   
+            
+            
+            <input type="text" name="indicado-por" id="indicado-por" placeholder="Quem indicou?"value="{{streaming_selecionada.indicado_por if streaming_selecionada else '' }}">
+            <input type="text" name="imagem" placeholder="insira a URL da imagem" value="{{streaming_selecionada.imagem if streaming_selecionada else '' }}">
+    
             <button type="submit">Salvar</button>
 
             {% if streaming_selecionada %}
@@ -18,13 +31,25 @@
 
     <ul>
         {% for streaming in streamings %}
-            <li>{{ streaming.titulo_streaming }} - {{ streaming.tipo_streaming }}
-            <a href="{{ url_for('delete', idStreaming=streaming.id_streaming) }}" class="btn btn-danger">Apagar</a></li>
-            <a href="{{ url_for('uptade', idStreaming=streaming.id_streaming) }}" class="btn btn-primary">Editar</a>
+            <li>
+                <img src="{{ streaming.imagem }}">
+                streaming: {{ streaming.titulo_streaming }}  <br>
+                tipo: {{ streaming.tipo_streaming }} <br>
+                indicado por: {{ streaming.indicado_por }}
+
+
+                <a href="{{ url_for('update', idStreaming=streaming.id) }}" class="btn btn-primary">Editar</a> 
+                <a href="{{ url_for('delete', idStreaming=streaming.id) }}" class="btn btn-danger">Apagar</a></li>     
+            
             <!-- Controle para editar-->
             {% endfor %}
     </ul>
 
+
+    {% if indicado_por %}
+        <p>Indicado por: {{ indicado_por }}</p>
+    {% endif %}
+    
     {% else %}
 
          <p>Nenhum streaming cadastrado, vamo assistir po</p>

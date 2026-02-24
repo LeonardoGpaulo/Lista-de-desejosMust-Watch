@@ -29,7 +29,7 @@ def lista():
 
 @app.route('/delete/<int:idStreaming>') 
 def delete(idStreaming):
-    streaming = Streaming.id(idStreaming)
+    streaming = Streaming.obter_por_id(idStreaming)
     streaming.excluir_streaming()
     # return render_template('agenda.html', titulo="Agenda", tarefas=tarefas)
     return redirect(url_for('lista')) 
@@ -49,7 +49,7 @@ def update(idStreaming):
             return redirect(url_for('lista')) #early return
             
         streamings = Streaming.obter_lista()
-        streaming_selecionada = Streaming.id(idStreaming) #seleçã da streaming que sera editada
+        streaming_selecionada = Streaming.obter_por_id(idStreaming) #seleçã da streaming que sera editada
         
         return render_template('lista.html', titulo= 'Errou o streaming, refaz ai!', streamings=streamings, streaming_selecionada=streaming_selecionada)
 

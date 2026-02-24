@@ -14,7 +14,7 @@ class Streaming:
         self.id: Optional[int] = id_streaming
 
     @classmethod
-    def id(cls, id: int) -> Self:
+    def obter_por_id(cls, id: int) -> Self:
         with Database() as db:
             query: str = 'SELECT titulo_streaming, tipo_streaming, indicado_por, id_streaming, imagem FROM streamings WHERE id_streaming = ?;'
             params: tuple = (id,)

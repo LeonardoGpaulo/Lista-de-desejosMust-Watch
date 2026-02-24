@@ -46,6 +46,15 @@ img{
     height: 200px;
 }   
 
+li{
+    display: inline-flex;
+    padding: 50px 30px;
+    background-color: #ffffff;
+    color: #000000;
+    flex-direction: column;
+    border-radius: 8px ;
+    margin: 10px;
+}
 
 
 /* TUDO OS BOTÕES ESTÃO AQUI */
@@ -75,15 +84,6 @@ button:hover {
     background-color: #1e8a23;
 }
 
-li{
-    display: inline-flex;
-    padding: 50px 30px;
-    background-color: #ffffff;
-    color: #000000;
-    flex-direction: column;
-    border-radius: 8px ;
-    margin: 10px;
-}
 
 .btn-secondary{
     padding: 10px 30px;
